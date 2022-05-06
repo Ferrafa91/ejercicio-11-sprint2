@@ -7,6 +7,14 @@ app.get("/", (req, res) => {
   res.render("home", {
     textDate: getDate(),
   });
+  const getDate = () => {
+    const date = new Date().getDay();
+    if (date < 6 && date !== 0) {
+      return "Hoy es un dia de semana";
+    } else {
+      return "Hoy es fin de semana";
+    }
+  };
 });
 const items = ["notebook", "impresora", "monitor", "mouse"];
 app.get("/productos", (req, res) => {
@@ -19,14 +27,6 @@ app.get("/sobre-nosotros", (req, res) => {
 app.get("/contacto", (req, res) => {
   res.render("contacto");
 });
-const getDate = () => {
-  const date = new Date().getDay();
-  if (date < 6 && date !== 0) {
-    return "Hoy es un dia de semana";
-  } else {
-    return "Hoy es fin de semana";
-  }
-};
 
 // LOCAL HOST 3000 //
 app.listen(3000);
